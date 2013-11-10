@@ -19,6 +19,8 @@
 void gooey();
 void console();
 bool makeMove( int move );
+bool isFull( int move );
+bool getWinner();
 
 // Constants
 const int nRows = 6;
@@ -42,26 +44,63 @@ int main()
 // made a move.
 bool makeMove( int move )
 {
-	// Determines if the colume specified is full.
-	int board[nRows][nCols];
-	for( int i = 0; i < nCols; i++ )
-	{
-		for( int j = 0; j < nRows; j++ )
-		{
-			return true;
-		}
-	}
+  // Determines if the column specified is full.
+  int board[nRows][nCols];
+  for( int i = 0; i < nCols; i++ )
+  {
+    for( int j = 0; j < nRows; j++ )
+    {
+      board[i][j];
+      if( j < 0 ) // If the column is greater than 0, the column is not full
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+  }
 
-	// Determines if the column is within the bounds of the array.
-	if( (move >= 1) && (move <= 7) )
-	{
-		return true;
-	}	
-	else
-	{
-		return false;
-	}
+  // Determines if the column is within the bounds of the array.
+  while( move > 7 && move < 0 )
+  {
+    return false;
+  }
 }
 
 
+// Determines if the entire board is full, returning true if it is; false otherwise.
+bool isFull()
+{
+  int board[nRows][nCols];
+  for( int i = 0; i < nRows; i++ )
+  {
+    for( int j = 0; j < nCols; i++ )
+    {
+      while( nRows > 0 ) // If the row is greater than 0, the board is not full.
+      {
+        return false;
+      }
+    }
+    
+  }
 
+}
+
+// must examine the entire board looking for four consecutive locations horizontally,
+// vertically, or diagnally that are non-empty and contain the same value, X or O.
+bool getWinner()
+{
+  int board[nRows][nCols];
+  for( int r = 0; r < nRows; r++ )
+  {
+    for( int c = 0; c < nCols - 1; c++ )
+    {
+      if( board[ r ][ c ] != ' ' && board[ r ][ c ] == board[ r ][ c + 1 ] )
+      {
+        // Found two horizontally adjacent locations containing the same player!
+      }
+    }
+  }
+}
